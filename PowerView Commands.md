@@ -1,5 +1,5 @@
 ## Basic Enumeration
-```
+```powershell
 #Basic Domain Information
 Get-NetDomain
 
@@ -22,7 +22,7 @@ Get-NetComputer -TrustedToAuth | select samaccountname
 Get-DomainGroup -AdminCount | Get-DomainGroupMember -Recurse | ?{$_.MemberName -like '*
 ```
 ## Domain Information
-```
+```powershell
 # Domain Info
 Get-NetDomain #Get info about the current domain
 Get-NetDomain -Domain mydomain.local
@@ -38,7 +38,7 @@ Get-DomainPolicy #Get info about the policy
 Get-NetDomainController -Domain mydomain.local #Get Domain Controller
 ```
 ## Users, Groups and Computers
-```
+```powershell
 # Users
 Get-NetUser #Get users with several (not all) properties
 Get-NetUser | select -ExpandProperty samaccountname #List all usernames
@@ -80,7 +80,7 @@ Get-NetComputer -TrustedToAuth #Find computers with Constrined Delegation
 Get-DomainGroup -AdminCount | Get-DomainGroupMember -Recurse | ?{$_.MemberName -like '*
 ```
  ## Logon and Sessions
-```
+```powershell
 Get-NetLoggedon -ComputerName <servername> #Get net logon users at the moment in a computer (need admins rights on target)
 Get-NetSession -ComputerName <servername> #Get active sessions on the host
 Get-LoggedOnLocal -ComputerName <servername> #Get locally logon users at the moment (need remote registry (default in server OS))
@@ -88,13 +88,13 @@ Get-LastLoggedon -ComputerName <servername> #Get last user logged on (needs admi
 Get-NetRDPSession -ComputerName <servername> #List RDP sessions inside a host (needs admin rights in host)
 ```
 ## Shared Files and Folders
-```
+```powershell
 Get-NetFileServer #Search file servers. Lot of users use to be logged in this kind of servers
 Find-DomainShare -CheckShareAccess #Search readable shares
 Find-InterestingDomainShareFile #Find interesting files, can use filters
 ```
 ## GPOs & OUs
-```
+```powershell
 #GPO
 Get-NetGPO #Get all policies with details
 Get-NetGPO | select displayname #Get the names of the policies
@@ -105,7 +105,7 @@ gpresult /V #Get current policy
 Get-DomainObjectAcl -LDAPFilter '(objectCategory=groupPolicyContainer)' | ? { ($_.SecurityIdentifier -match '^S-1-5-.*-[1-9]\d{3,}
 ```
 ## ACL
-```
+```powershell
 Get-ObjectAcl -SamAccountName <username> -ResolveGUIDs #Get ACLs of an object (permissions of other objects over the indicated one)
 Get-PathAcl -Path "\\dc.mydomain.local\sysvol" #Get permissions of a file
 Find-InterestingDomainAcl -ResolveGUIDs #Find intresting ACEs (Interesting permisions of "unexpected objects" (RID>1000 and modify permissions) over other objects
