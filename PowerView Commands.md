@@ -113,7 +113,7 @@ Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReference -match "RDPUser
 Get-NetGroupMember -GroupName "Administrators" -Recurse | ?{$_.IsGroup -match "false"} | %{Get-ObjectACL -SamAccountName $_.MemberName -ResolveGUIDs} | select ObjectDN, IdentityReference, ActiveDirectoryRights #Get special rights over All administrators in domain
 ```
 ## Domain Trust
-```
+```php
 Get-NetDomainTrust #Get all domain trusts (parent, children and external)
 Get-NetForestDomain | Get-NetDomainTrust #Enumerate all the trusts of all the domains found
 Get-DomainTrustMapping #Enumerate also all the trusts
@@ -129,5 +129,6 @@ Note: Most of the above commands are compiled from the below 2 resources. All th
 
 References:
 
-https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon
+https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon 
+
 https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
