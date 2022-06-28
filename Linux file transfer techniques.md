@@ -1,7 +1,7 @@
 ## Kali Machine(Attacking machine)- We need to start the http server to serve the files so that other systems can access it.
 
 ### HTTP Server
-```bash
+```python
 python -m SimpleHTTPServer 80
 python -m http.server 80
 ```
